@@ -21,5 +21,5 @@ from polls import downloader
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^hello/', views.hello),
-    url(),
+    url(r'^search/$' , downloader.search, name='search'),
 ]
