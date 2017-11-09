@@ -45,6 +45,13 @@ def search(request):
             videosHd720.append(mat)
     # response object
     resp = {}
+    # allow CORS
+    resp["Access-Control-Allow-Origin"] = "*"
+    resp["Access-Control-Allow-Methods"] = "POST, GET, OPTIONS"
+    resp["Access-Control-Max-Age"] = "1000"
+    resp["Access-Control-Allow-Headers"] = "*"
+    
+    
     if len(audiosAndVideos) > 0 :
         resp['success']='yes'
     else:
