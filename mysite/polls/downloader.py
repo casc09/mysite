@@ -45,23 +45,25 @@ def search(request):
             videosHd720.append(mat)
     # response object
     resp = {}
-    # allow CORS
-    resp["Access-Control-Allow-Origin"] = "*"
-    resp["Access-Control-Allow-Methods"] = "POST, GET, OPTIONS"
-    resp["Access-Control-Max-Age"] = "1000"
-    resp["Access-Control-Allow-Headers"] = "*"
-    
-    
+
     if len(audiosAndVideos) > 0 :
         resp['success']='yes'
     else:
         resp['success'] = 'no'
+        
     resp['audios']=audios
     resp['videosSmall']=videosSmall
     resp['videosMedium']=videosMedium
     resp['videoHd720']=videosHd720
 
-    return HttpResponse(json.dumps(resp), content_type="application/json")
+    response=HttpResponse(json.dumps(resp), content_type="application/json")
+     # allow CORS
+    response["Access-Control-Allow-Origin"] = "*"
+    response["Access-Control-Allow-Methods"] = "POST, GET, OPTIONS"
+    response["Access-Control-Max-Age"] = "1000"
+    response["Access-Control-Allow-Headers"] = "*"
+    
+    return response
     # video_info = videosHd720[0]
     # video_url = video_info['url']
     # video_formate = video_info['ext']
