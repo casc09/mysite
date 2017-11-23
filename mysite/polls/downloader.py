@@ -47,6 +47,10 @@ def search(request):
     resp = {}
     if len(audiosAndVideos) > 0 :
         resp['success']='yes'
+        resp['thumbnail']=video['thumbnail']
+        resp['title']=video['title']
+        resp['description']=video['description']
+        resp['duration']=video['duration']
     else:
         resp['success'] = 'no'
     resp['audios']=audios
