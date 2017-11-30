@@ -51,8 +51,14 @@ def search(request):
         resp['success']='yes'
         resp['thumbnail']=video['thumbnail']
         resp['title']=video['title']
-        resp['description']=video['description']
-        resp['duration']=video['duration']
+        if video.has_key('description'):
+            resp['description']=video['description']
+        else:
+            resp['description']='nodata'
+        if video.has_key('description'):
+            resp['duration']=video['duration']
+        else:
+            resp['duration']='nodata'
     else:
         resp['success'] = 'no'
         
