@@ -34,10 +34,13 @@ def search(request):
     videosSmall = []
     videosMedium = []
     videosHd720 = []
+    videoDash = []
     for mat in audiosAndVideos:
         if mat.has_key('format_note'):
             if mat['format_note'] == 'DASH audio':
                 audios.append(mat)
+            if mat['format_note'] == 'DASH video':
+                videoDash.append(mat)
             if mat['format_note'] == 'small':
                 videosSmall.append(mat)
             if mat['format_note'] == 'medium':
@@ -66,7 +69,7 @@ def search(request):
     resp['videosSmall']=videosSmall
     resp['videosMedium']=videosMedium
     resp['videoHd720']=videosHd720
-
+    resp['videoDash']=videoDash
     response=HttpResponse(json.dumps(resp), content_type="application/json")
      # allow CORS
     response["Access-Control-Allow-Origin"] = "*"
