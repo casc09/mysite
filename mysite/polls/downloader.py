@@ -69,8 +69,14 @@ def search(request):
     resp['videosSmall']=videosSmall
     resp['videosMedium']=videosMedium
     resp['videoHd720']=videosHd720
-    resp['videoDash']=videoDash
+    resp['videoDash'] = videoDash
+    if  len(videosSmall) > 0 or len(videosMedium) > 0 or len(videosHd720) > 0:
+        resp['justDashVideo'] = 'no'
+    else:
+        resp['justDashVideo'] = 'yes'
+
     response=HttpResponse(json.dumps(resp), content_type="application/json")
+
      # allow CORS
     response["Access-Control-Allow-Origin"] = "*"
     response["Access-Control-Allow-Methods"] = "POST, GET, OPTIONS"
