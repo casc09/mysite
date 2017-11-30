@@ -44,8 +44,6 @@ def search(request):
                 videosMedium.append(mat)
             if mat['format_note'] == 'hd720':
                 videosHd720.append(mat)
-        else:
-            return
     # response object
     resp = {}
 
