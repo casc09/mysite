@@ -35,14 +35,17 @@ def search(request):
     videosMedium = []
     videosHd720 = []
     for mat in audiosAndVideos:
-        if mat['format_note'] == 'DASH audio':
-            audios.append(mat)
-        if mat['format_note'] == 'small':
-            videosSmall.append(mat)
-        if mat['format_note'] == 'medium':
-            videosMedium.append(mat)
-        if mat['format_note'] == 'hd720':
-            videosHd720.append(mat)
+        if mat.has_key('format_note'):
+            if mat['format_note'] == 'DASH audio':
+                audios.append(mat)
+            if mat['format_note'] == 'small':
+                videosSmall.append(mat)
+            if mat['format_note'] == 'medium':
+                videosMedium.append(mat)
+            if mat['format_note'] == 'hd720':
+                videosHd720.append(mat)
+        else:
+            return
     # response object
     resp = {}
 
