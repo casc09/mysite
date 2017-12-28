@@ -12,8 +12,10 @@ import sys
 from django.core.wsgi import get_wsgi_application
 
 
-sys.path.append("/home/mycode/mysite/mysite/mysite")
 
+path = '/home/mycode/mysite/mysite'
+if path not in sys.path:
+    sys.path.append(path)
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings")
 
 application = get_wsgi_application()
